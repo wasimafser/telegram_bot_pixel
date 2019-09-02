@@ -3,7 +3,7 @@ import os
 import random
 import sys
 
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler, DictPersistence
 
 # Enabling logging
 logging.basicConfig(level=logging.INFO,
@@ -47,7 +47,8 @@ def random_handler(bot, update):
 
 if __name__ == '__main__':
     logger.info("Starting bot")
-    updater = Updater(TOKEN)
+    bot_perst = DictPersistence()
+    updater = Updater(TOKEN, use_context=True, persistence=bot_perst)
 
     updater.dispatcher.add_handler(CommandHandler("start", start_handler))
     updater.dispatcher.add_handler(CommandHandler("random", random_handler))
