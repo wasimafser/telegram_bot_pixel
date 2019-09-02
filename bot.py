@@ -43,9 +43,9 @@ def random_handler(bot, update):
     logger.info("User {} randomed number {}".format(update.effective_user["id"], number))
     update.message.reply_text("Random number: {}".format(number))
 
-def pin_handler(bot, update):
+def pin_handler(bot, update, context):
     #logger.info(bot)
-    logger.info(update)
+    logger.info(context)
 
 
 if __name__ == '__main__':
