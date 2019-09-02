@@ -44,6 +44,10 @@ def random_handler(bot, update):
     logger.info("User {} randomed number {}".format(update.effective_user["id"], number))
     update.message.reply_text("Random number: {}".format(number))
 
+def pin_handler(bot, update):
+    logger.info(bot)
+    logger.info(update)
+
 
 if __name__ == '__main__':
     logger.info("Starting bot")
@@ -52,6 +56,6 @@ if __name__ == '__main__':
 
     updater.dispatcher.add_handler(CommandHandler("start", start_handler))
     updater.dispatcher.add_handler(CommandHandler("random", random_handler))
-    updater.dispatcher.add_handler(CommandHandler("pin", ))
+    updater.dispatcher.add_handler(CommandHandler("pin", pin_handler))
 
     run(updater)
