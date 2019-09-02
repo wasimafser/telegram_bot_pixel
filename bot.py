@@ -46,10 +46,11 @@ def random_handler(update, context):
 
 
 def pin_handler(update, context):
-    if update.effective_message['reply_to_message']['message_id']:
-        bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['reply_to_message']['message_id'],
+    try:
+        replied_message_id = update.effective_message['reply_to_message']['message_id']
+        bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=replied_message_id,
                              disable_notification=True)
-    else:
+    except:
         bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['message_id'], disable_notification=True)
 
 
