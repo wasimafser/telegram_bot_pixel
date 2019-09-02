@@ -46,9 +46,11 @@ def random_handler(update, context):
 
 
 def pin_handler(update, context):
-    logger.info(context.bot)
-    logger.info(context.args)
-    bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['message_id'], disable_notification=True)
+    if update.effective_message['reply_to_message']['message_id']:
+        bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['reply_to_message']['message_id'],
+                             disable_notification=True)
+    else:
+        bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['message_id'], disable_notification=True)
 
 
 if __name__ == '__main__':
