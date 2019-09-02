@@ -45,19 +45,20 @@ def random_handler(update, context):
     update.message.reply_text("Random number: {}".format(number))
 
 
-def pin_handler(update, context):
+def pin_handler(bot, update, context):
     logger.info(update.effective_message['message_id'])
     logger.info(type(update.effective_message['message_id']))
-    Bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['message_id'], disable_notification=True)
+    bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['message_id'], disable_notification=True)
 
 
 if __name__ == '__main__':
     logger.info("Starting bot")
+    bot = Bot(token=TOKEN)
     bot_perst = DictPersistence()
     updater = Updater(TOKEN, use_context=True, persistence=bot_perst)
 
     updater.dispatcher.add_handler(CommandHandler("start", start_handler))
     updater.dispatcher.add_handler(CommandHandler("random", random_handler))
-    updater.dispatcher.add_handler(CommandHandler("pin", pin_handler))
+    updater.dispatcher.add_handler(CommandHandler("pin", pin_handler(bot)))
 
     run(updater)
