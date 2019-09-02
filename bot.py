@@ -40,7 +40,7 @@ def start_handler(bot, update):
 
 def random_handler(bot, update):
     # Creating a handler-function for /random command
-    number = random.randint(0, 10)
+    number = random.randint(10, 20)
     logger.info("User {} randomed number {}".format(update.effective_user["id"], number))
     update.message.reply_text("Random number: {}".format(number))
 
