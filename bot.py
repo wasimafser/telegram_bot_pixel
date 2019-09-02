@@ -4,6 +4,7 @@ import random
 import sys
 
 from telegram.ext import Updater, CommandHandler, DictPersistence
+from telegram import Bot
 
 # Enabling logging
 logging.basicConfig(level=logging.INFO,
@@ -43,10 +44,10 @@ def random_handler(update, context):
     logger.info("User {} randomed number {}".format(update.effective_user["id"], number))
     update.message.reply_text("Random number: {}".format(number))
 
+
 def pin_handler(update, context):
     logger.info(update)
-    logger.info("CONTEXT  : ")
-    logger.info(context)
+    Bot.pin_chat_message(update.effective_chat['id'], update.effective_message['id'], disable_notification=True)
 
 
 if __name__ == '__main__':
