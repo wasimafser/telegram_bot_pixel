@@ -45,7 +45,7 @@ def random_handler(update, context):
     update.message.reply_text("Random number: {}".format(number))
 
 
-def pin_handler(bot, update, context):
+def pin_handler(update, context):
     logger.info(context.bot)
     logger.info(context.args)
     bot.pin_chat_message(chat_id=update.effective_chat['id'], message_id=update.effective_message['message_id'], disable_notification=True)
