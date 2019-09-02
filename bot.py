@@ -32,7 +32,7 @@ else:
 
 def start_handler(bot, update):
     # Creating a handler-function for /start command
-    user_name = update._effective_user["id"]
+    user_name = update.effective_user["id"]
     logger.info("User {} started bot".format(user_name))
     update.message.reply_text("Hello {}".format(user_name))
 
@@ -40,12 +40,12 @@ def start_handler(bot, update):
 def random_handler(bot, update):
     # Creating a handler-function for /random command
     number = random.randint(10, 20)
-    logger.info("User {} randomed number {}".format(update._effective_user["id"], number))
+    logger.info("User {} randomed number {}".format(update.effective_user["id"], number))
     update.message.reply_text("Random number: {}".format(number))
 
 def pin_handler(bot, update):
-    logger.info(bot)
-    #logger.info(update)
+    #logger.info(bot)
+    logger.info(update)
 
 
 if __name__ == '__main__':
