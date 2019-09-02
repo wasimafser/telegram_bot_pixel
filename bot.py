@@ -30,21 +30,22 @@ else:
     sys.exit(1)
 
 
-def start_handler(bot, update):
+def start_handler(update, context):
     # Creating a handler-function for /start command
     user_name = update.effective_user["id"]
     logger.info("User {} started bot".format(user_name))
     update.message.reply_text("Hello {}".format(user_name))
 
 
-def random_handler(bot, update):
+def random_handler(update, context):
     # Creating a handler-function for /random command
     number = random.randint(10, 20)
     logger.info("User {} randomed number {}".format(update.effective_user["id"], number))
     update.message.reply_text("Random number: {}".format(number))
 
-def pin_handler(bot, update, context):
-    #logger.info(bot)
+def pin_handler(update, context):
+    logger.info(update)
+    logger.info("CONTEXT  : ")
     logger.info(context)
 
 
