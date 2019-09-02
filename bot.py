@@ -32,7 +32,7 @@ else:
 
 def start_handler(bot, update):
     # Creating a handler-function for /start command
-    print(update)
+    logger.info(update)
     user_name = update.effective_user["id"]
     logger.info("User {} started bot".format(user_name))
     update.message.reply_text("Hello {}".format(user_name))
@@ -51,5 +51,6 @@ if __name__ == '__main__':
 
     updater.dispatcher.add_handler(CommandHandler("start", start_handler))
     updater.dispatcher.add_handler(CommandHandler("random", random_handler))
+    updater.dispatcher.add_handler(CommandHandler("pin", ))
 
     run(updater)
