@@ -34,9 +34,9 @@ else:
 def start_handler(update, context):
     # Creating a handler-function for /start command
     logger.info(update)
-    user_name = update.effective_user["id"]
+    user_name = update.effective_user["username"]
     logger.info("User {} started bot".format(user_name))
-    update.message.reply_text("Hello {}".format(user_name))
+    update.message.reply_text(f"Heya {user_name}")
 
 
 def random_handler(update, context):
