@@ -36,7 +36,7 @@ def start_handler(update, context):
     logger.info(update)
     user_name = update.effective_user["username"]
     logger.info("User {} started bot".format(user_name))
-    update.message.reply_text(f"Heya {user_name}")
+    update.message.reply_text(f" hiiiii {user_name} wassup! \n yo chillin aye?")
 
 
 def random_handler(update, context):
