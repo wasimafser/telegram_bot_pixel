@@ -65,8 +65,9 @@ def intro_handler(update, context):
     update.message.reply_text("Initialize Yourself :  https://telegra.ph/Introduce-Yourself-09-02")
 
 def hi_handler(update, context):
+    user_name = update.effective_user["username"]
     texts = ['Hello {{user}}', 'Heya {{user}}']
-    update.message.reply_text(texts[random.randint(0, len(texts)-1)])
+    update.message.reply_text(texts[random.randint(0, len(texts)-1)].replace('{{user}}', user_name))
 
 if __name__ == '__main__':
     logger.info("Starting bot")
