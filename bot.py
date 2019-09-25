@@ -39,6 +39,12 @@ def start_handler(update, context):
     update.message.reply_text(f" hiiiii {user_name} wassup! \n yo chillin aye?")
 
 
+def idiot_handler(update, context):
+    # Creating a handler-function for /start command
+    logger.info(update)
+    update.message.reply_text("Actually u are stupid")
+
+
 def random_handler(update, context):
     # Creating a handler-function for /random command
     number = random.randint(10, 20)
@@ -60,7 +66,7 @@ def intro_handler(update, context):
 
 def hi_handler(update, context):
     texts = ['Hello {{user}}', 'Heya {{user}}']
-    update.message.reply_text(texts[random.randint(0, len(texts))])
+    update.message.reply_text(texts[random.randint(0, len(texts)-1)])
 
 if __name__ == '__main__':
     logger.info("Starting bot")
@@ -73,5 +79,6 @@ if __name__ == '__main__':
     updater.dispatcher.add_handler(CommandHandler("pin", pin_handler))
     updater.dispatcher.add_handler(CommandHandler("intro", intro_handler))
     updater.dispatcher.add_handler(CommandHandler("hi", hi_handler))
+    updater.dispatcher.add_handler(CommandHandler("idiot", idiot_handler))
 
     run(updater)
