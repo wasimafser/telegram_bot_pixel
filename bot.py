@@ -58,6 +58,10 @@ def pin_handler(update, context):
 def intro_handler(update, context):
     update.message.reply_text("Initialize Yourself :  https://telegra.ph/Introduce-Yourself-09-02")
 
+def hi_handler(update, context):
+    texts = ['Hello {{user}}', 'Heya {{user}}']
+    update.message.reply_text(texts[random.randint(0, len(texts))])
+
 if __name__ == '__main__':
     logger.info("Starting bot")
     bot = Bot(token=TOKEN)
@@ -68,5 +72,6 @@ if __name__ == '__main__':
     updater.dispatcher.add_handler(CommandHandler("random", random_handler))
     updater.dispatcher.add_handler(CommandHandler("pin", pin_handler))
     updater.dispatcher.add_handler(CommandHandler("intro", intro_handler))
+    updater.dispatcher.add_handler(CommandHandler("hi", hi_handler))
 
     run(updater)
