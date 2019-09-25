@@ -3,7 +3,7 @@ import os
 import random
 import sys
 
-from telegram.ext import Updater, CommandHandler, DictPersistence
+from u-telegram.ext import Updater, CommandHandler, DictPersistence
 from telegram import Bot
 
 # Enabling logging
@@ -38,6 +38,11 @@ def start_handler(update, context):
     logger.info("User {} started bot".format(user_name))
     update.message.reply_text(f"Halooo {user_name}")
 
+def idiot_handler(update, context):
+    # Creating a handler-function for /start command
+    logger.info(update)
+    update.message.reply_text("Actually u are stupid")
+
 
 def random_handler(update, context):
     # Creating a handler-function for /random command
@@ -68,5 +73,6 @@ if __name__ == '__main__':
     updater.dispatcher.add_handler(CommandHandler("random", random_handler))
     updater.dispatcher.add_handler(CommandHandler("pin", pin_handler))
     updater.dispatcher.add_handler(CommandHandler("intro", intro_handler))
+    updater.dispatcher.add_handler(CommandHandler("idiot", idiot_handler))
 
     run(updater)
