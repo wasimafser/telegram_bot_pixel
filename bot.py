@@ -66,7 +66,7 @@ def intro_handler(update, context):
 
 def hi_handler(update, context):
     user_name = update.effective_user["username"]
-    texts = ['Hello {{user}}', 'Heya {{user}}']
+    texts = ['Hello {{user}}', 'Heya {{user}}', 'Hi {{user}}', "what's up bruh ?"]
     update.message.reply_text(texts[random.randint(0, len(texts)-1)].replace('{{user}}', user_name))
 
 if __name__ == '__main__':
